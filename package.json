@@ -1,12 +1,16 @@
 {
-  "name": "my-data-grid",
+  "name": "my-grid-table",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "build": "weweb build",
     "serve": "weweb serve"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@ag-grid-community/locale": "33.2.4",
+    "ag-grid-community": "33.2.4",
+    "ag-grid-vue3": "33.2.4"
+  },
   "devDependencies": {
     "@weweb/cli": "latest"
   }
