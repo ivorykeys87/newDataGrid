@@ -873,8 +873,7 @@ export default {
       hidden: (content) => !content.useRowStyleFormula,
       /* wwEditor:start */
       propertyHelp: {
-        tooltip: "Return a CSS color value based on row data. The context includes all row fields plus `isSelected`.
-Example: IF(isSelected, '#1e40af', IF(status = 'Qualified', '#14532d', ''))",
+        tooltip: "Return a CSS color value based on row data. The context includes all row fields plus `isSelected`. Example: IF(isSelected, '#1e40af', IF(status = 'Qualified', '#14532d', ''))",
       },
       /* wwEditor:end */
     },
