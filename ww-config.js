@@ -344,7 +344,7 @@ export default {
       hidden: (content) => !content.showToolbar || !content.pagination,
       /* wwEditor:end */
     },
- 
+
     // ─── TOOLBAR STYLE ───────────────────────────────────────────────────────
     toolbarBackgroundColor: {
       type: "Color",
@@ -363,7 +363,7 @@ export default {
       type: "Spacing",
       responsive: true, bindable: true, states: true, classes: true,
     },
- 
+
     // Results label style
     resultsLabelColor: {
       type: "Color",
@@ -403,7 +403,7 @@ export default {
       type: "FontFamily",
       responsive: true, bindable: true, states: true, classes: true,
     },
- 
+
     // Results badge style
     resultsBadgeBackgroundColor: {
       type: "Color",
@@ -434,7 +434,7 @@ export default {
       type: "Spacing",
       responsive: true, bindable: true, states: true, classes: true,
     },
- 
+
     // Rows per page style
     rppLabelColor: {
       type: "Color",
@@ -472,7 +472,7 @@ export default {
       },
       responsive: true, bindable: true, states: true, classes: true,
     },
- 
+
     // ─── FOOTER STYLE ────────────────────────────────────────────────────────
     footerBackgroundColor: {
       type: "Color",
@@ -510,7 +510,7 @@ export default {
       },
       responsive: true, bindable: true, states: true, classes: true,
     },
- 
+
     // Pagination button style
     maxPaginationButtons: {
       type: "Number",
@@ -581,7 +581,7 @@ export default {
       options: { nullable: true },
       responsive: true, bindable: true, states: true, classes: true,
     },
- 
+
     // ─── EXISTING PROPERTIES (UNCHANGED) ────────────────────────────────────
     layout: {
       type: "TextSelect",
@@ -1125,7 +1125,7 @@ Example: IF(isSelected, '#1e40af', IF(status = 'Qualified', '#14532d', ''))",
       },
       /* wwEditor:end */
     },
- 
+
     rowData: {
       label: { en: "Data" },
       type: "ObjectList",
@@ -1314,10 +1314,27 @@ Example: IF(isSelected, '#1e40af', IF(status = 'Qualified', '#14532d', ''))",
                   options: [
                     { value: "default", label: "Default (text)", default: true },
                     { value: "phone", label: "Phone  —  (###) ###-####" },
+                    { value: "currency", label: "Currency  —  $0.00" },
+                    { value: "percentage", label: "Percentage  —  0.00%" },
+                    { value: "date", label: "Date  —  MM-DD-YYYY" },
+                    { value: "dropdown", label: "Dropdown" },
                   ],
                 },
                 hidden: !array?.item?.editable || array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image" || array?.item?.cellDataType === "custom",
                 bindable: true,
+              },
+              editorOptions: {
+                label: "Dropdown Options",
+                type: "RawObject",
+                options: { placeholder: '["Option 1", "Option 2"] or [{ value: "a", label: "Option A" }]' },
+                hidden: !array?.item?.editable || array?.item?.editorType !== "dropdown",
+                bindable: true,
+                /* wwEditor:start */
+                bindingValidation: {
+                  type: "array",
+                  tooltip: "Array of strings or objects with value/label keys. Bindable to external data.",
+                },
+                /* wwEditor:end */
               },
               filter: {
                 label: "Filter",
@@ -1341,7 +1358,7 @@ Example: IF(isSelected, '#1e40af', IF(status = 'Qualified', '#14532d', ''))",
               "actionName", "actionLabel", "imageWidth", "imageHeight",
               "useCustomLabel", "displayLabelFormula",
               { label: "Width", isCollapsible: true, properties: ["widthAlgo", "flex", "width", "minWidth", "maxWidth"] },
-              { label: "Configuration", isCollapsible: true, properties: ["pinned", "hide", "editable", "editorType", "filter", "sortable"] },
+              { label: "Configuration", isCollapsible: true, properties: ["pinned", "hide", "editable", "editorType", "editorOptions", "filter", "sortable"] },
             ],
           }),
         },
