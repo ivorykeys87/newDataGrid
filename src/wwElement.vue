@@ -187,6 +187,7 @@ import CurrencyCellEditor from "./components/CurrencyCellEditor.vue";
 import PercentageCellEditor from "./components/PercentageCellEditor.vue";
 import DateCellEditor from "./components/DateCellEditor.vue";
 import DropdownCellEditor from "./components/DropdownCellEditor.vue";
+import ExtensionCellEditor from "./components/ExtensionCellEditor.vue";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -201,6 +202,7 @@ export default {
     PercentageCellEditor,
     DateCellEditor,
     DropdownCellEditor,
+    ExtensionCellEditor,
   },
   props: {
     content: {
@@ -916,6 +918,9 @@ export default {
                   result.cellEditorParams = {
                     editorOptions: col.editorOptions || [],
                   };
+                  break;
+                case 'extension':
+                  result.cellEditor = 'ExtensionCellEditor';
                   break;
               }
             }
