@@ -1317,6 +1317,7 @@ export default {
                     { value: "percentage", label: "Percentage  —  0.00%" },
                     { value: "date", label: "Date  —  MM-DD-YYYY" },
                     { value: "dropdown", label: "Dropdown" },
+                    { value: "extension", label: "Extension  —  digits only" },
                   ],
                 },
                 hidden: !array?.item?.editable || array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image" || array?.item?.cellDataType === "custom",
