@@ -183,6 +183,10 @@ import ActionCellRenderer from "./components/ActionCellRenderer.vue";
 import ImageCellRenderer from "./components/ImageCellRenderer.vue";
 import WewebCellRenderer from "./components/WewebCellRenderer.vue";
 import PhoneCellEditor from "./components/PhoneCellEditor.vue";
+import CurrencyCellEditor from "./components/CurrencyCellEditor.vue";
+import PercentageCellEditor from "./components/PercentageCellEditor.vue";
+import DateCellEditor from "./components/DateCellEditor.vue";
+import DropdownCellEditor from "./components/DropdownCellEditor.vue";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -193,6 +197,10 @@ export default {
     ImageCellRenderer,
     WewebCellRenderer,
     PhoneCellEditor,
+    CurrencyCellEditor,
+    PercentageCellEditor,
+    DateCellEditor,
+    DropdownCellEditor,
   },
   props: {
     content: {
@@ -889,8 +897,27 @@ export default {
               filter: col?.filter,
               editable: col?.editable,
             };
-            if (col?.editable && col?.editorType === 'phone') {
-              result.cellEditor = 'PhoneCellEditor';
+            if (col?.editable && col?.editorType) {
+              switch (col.editorType) {
+                case 'phone':
+                  result.cellEditor = 'PhoneCellEditor';
+                  break;
+                case 'currency':
+                  result.cellEditor = 'CurrencyCellEditor';
+                  break;
+                case 'percentage':
+                  result.cellEditor = 'PercentageCellEditor';
+                  break;
+                case 'date':
+                  result.cellEditor = 'DateCellEditor';
+                  break;
+                case 'dropdown':
+                  result.cellEditor = 'DropdownCellEditor';
+                  result.cellEditorParams = {
+                    editorOptions: col.editorOptions || [],
+                  };
+                  break;
+              }
             }
             if (col?.useCustomLabel) {
               result.valueFormatter = (params) =>
