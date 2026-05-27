@@ -1,0 +1,1573 @@
+export default {
+  editor: {
+    label: {
+      en: "Datagrid",
+    },
+    icon: "table",
+    customStylePropertiesOrder: [
+      {
+        label: "General",
+        isCollapsible: true,
+        properties: [
+          "layout",
+          "height",
+          "textColor",
+          "borderColor",
+          "wrapperBorderRadius",
+        ],
+      },
+      {
+        label: "Header",
+        isCollapsible: true,
+        properties: [
+          "headerBackgroundColor",
+          "headerTextColor",
+          "headerFontWeight",
+          "headerFontSize",
+          "headerFontFamily",
+          "headerHeightMode",
+          "headerHeight",
+        ],
+      },
+      {
+        label: "Header Dynamic style",
+        isCollapsible: true,
+        properties: [
+          "useDynamicStyleHeader",
+          "dynamicHeaderBackgroundColor",
+          "dynamicHeaderTextColor",
+          "dynamicHeaderFontWeight",
+          "dynamicHeaderFontSize",
+          "dynamicHeaderFontFamily",
+        ],
+      },
+      {
+        label: "Row",
+        isCollapsible: true,
+        properties: [
+          "rowBackgroundColor",
+          "rowAlternateColor",
+          "rowHoverColor",
+          "rowVerticalPaddingScale",
+        ],
+      },
+      {
+        label: "Column",
+        isCollapsible: true,
+        properties: ["columnHoverHighlight", "columnHoverColor"],
+      },
+      {
+        label: "Cell",
+        isCollapsible: true,
+        properties: [
+          "cellColor",
+          "cellFontFamily",
+          "cellFontSize",
+          "cellSelectionBorderColor",
+          "cellAlignmentMode",
+          "cellAlignment",
+        ],
+      },
+      {
+        label: "Menu",
+        isCollapsible: true,
+        properties: ["menuTextColor", "menuBackgroundColor"],
+      },
+      {
+        label: "Selection",
+        isCollapsible: true,
+        properties: [
+          "selectedRowBackgroundColor",
+          "useRowStyleFormula",
+          "rowStyleFormula",
+          "selectionCheckboxColor",
+          "focusShadow",
+          "checkboxUncheckedBorderColor",
+        ],
+      },
+      {
+        label: "Action",
+        isCollapsible: true,
+        properties: [
+          "actionColor",
+          "actionBackgroundColor",
+          "actionPadding",
+          "actionBorder",
+          "actionBorderRadius",
+          "actionFont",
+          "actionFontSize",
+          "actionFontFamily",
+          "actionFontWeight",
+          "actionFontStyle",
+          "actionLineHeight",
+        ],
+      },
+      {
+        label: "Toolbar",
+        isCollapsible: true,
+        properties: [
+          "toolbarBackgroundColor",
+          "toolbarBorderColor",
+          "toolbarPadding",
+          "resultsLabelColor",
+          "resultsLabelFontSize",
+          "resultsLabelFontWeight",
+          "resultsLabelFontFamily",
+          "resultsBadgeBackgroundColor",
+          "resultsBadgeColor",
+          "resultsBadgeBorderRadius",
+          "resultsBadgePadding",
+          "rppLabelColor",
+          "rppSelectBackgroundColor",
+          "rppSelectColor",
+          "rppSelectBorderColor",
+          "rppSelectBorderRadius",
+        ],
+      },
+      {
+        label: "Footer / Pagination",
+        isCollapsible: true,
+        properties: [
+          "footerBackgroundColor",
+          "footerBorderColor",
+          "footerPadding",
+          "footerInfoColor",
+          "footerInfoFontSize",
+          "maxPaginationButtons",
+          "pageBtnColor",
+          "pageBtnBackgroundColor",
+          "pageBtnBorderColor",
+          "pageBtnBorderRadius",
+          "pageBtnSize",
+          "pageBtnActiveColor",
+          "pageBtnActiveBackgroundColor",
+        ],
+      },
+    ],
+    customSettingsPropertiesOrder: [
+      "rowData",
+      "idFormula",
+      "generateColumns",
+      "columns",
+      {
+        label: "Toolbar & Pagination",
+        isCollapsible: true,
+        properties: [
+          "showToolbar",
+          "resultsLabel",
+          "rowsNoun",
+          "rowsPerPageLabel",
+          "pagination",
+          "hasPaginationSelector",
+          "paginationPageSize",
+          "paginationPageSizeSelector",
+        ],
+      },
+      {
+        label: "Server-side Pagination",
+        isCollapsible: true,
+        properties: [
+          "serverTotalItems",
+          "serverTotalPages",
+          "serverCurrentPage",
+          "serverItemsReceived",
+        ],
+      },
+      {
+        label: "Selection",
+        properties: [
+          "rowSelection",
+          "enableClickSelection",
+          "disableCheckboxes",
+          "selectAll",
+        ],
+      },
+      "movableColumns",
+      "resizableColumns",
+      "rowReorder",
+      "reorderInfoBox",
+      "initialFilters",
+      "initialSort",
+      "initialColumnsOrder",
+      ["lang", "localeText"],
+    ],
+  },
+  triggerEvents: [
+    {
+      name: "action",
+      label: { en: "On Action" },
+      event: { actionName: "", row: null, id: 0, index: 0, displayIndex: 0 },
+      getTestEvent: "getOnActionTestEvent",
+      default: true,
+    },
+    {
+      name: "cellValueChanged",
+      label: { en: "On Cell Value Changed" },
+      event: { oldValue: null, newValue: null, columnId: "id", row: null },
+      getTestEvent: "getOnCellValueChangedTestEvent",
+    },
+    {
+      name: "rowSelected",
+      label: { en: "On Row Selected" },
+      event: { row: null },
+      getTestEvent: "getSelectionTestEvent",
+    },
+    {
+      name: "rowDeselected",
+      label: { en: "On Row Deselected" },
+      event: { row: null },
+      getTestEvent: "getSelectionTestEvent",
+    },
+    { name: "filterChanged", label: { en: "On Filter Changed" } },
+    { name: "sortChanged", label: { en: "On Sort Changed" } },
+    {
+      name: "pageChanged",
+      label: { en: "On Page Changed" },
+      event: { page: 1, pageSize: 10 },
+    },
+    {
+      name: "pageSizeChanged",
+      label: { en: "On Page Size Changed" },
+      event: { pageSize: 10, page: 1 },
+    },
+    {
+      name: "rowClicked",
+      label: { en: "On Row Clicked" },
+      event: { row: null, id: 0, index: 0, displayIndex: 0 },
+      getTestEvent: "getRowClickedTestEvent",
+    },
+    {
+      name: "rowDragStart",
+      label: { en: "On Row Drag Start" },
+      event: { row: null, id: 0 },
+      getTestEvent: "getRowDragStartTestEvent",
+    },
+    {
+      name: "rowDragged",
+      label: { en: "On Row Dragged" },
+      event: { row: null, id: 0, targetIndex: 0, rows: [] },
+      getTestEvent: "getRowDraggedTestEvent",
+    },
+    {
+      name: "columnMoved",
+      label: { en: "On Column Moved" },
+      event: { columnId: null, toIndex: 0, columnsOrder: [] },
+      getTestEvent: "getColumnMovedTestEvent",
+    },
+  ],
+  actions: [
+    { label: "Reset filters", action: "resetFilters" },
+    { label: "Reset sort", action: "resetSort" },
+    {
+      label: "Select all",
+      action: "selectAll",
+      args: [
+        {
+          name: "mode",
+          type: "select",
+          options: [
+            { value: null, label: "Grid behavior", default: true },
+            { value: "all", label: "All rows" },
+            { value: "filtered", label: "Filtered rows" },
+            { value: "currentPage", label: "Current page rows" },
+          ],
+          /* wwEditor:start */
+          bindingValidation: {
+            type: "string",
+            enum: ["all", "filtered", "currentPage"],
+            tooltip:
+              "Select all behavior: 'all' to select all rows, 'filtered' to select filtered rows, 'currentPage' to select current page rows, and null if you want to fallback on the grid behavior",
+          },
+          /* wwEditor:end */
+        },
+      ],
+    },
+    { label: "Deselect all", action: "deselectAll" },
+    { label: "Select row", action: "selectRow", args: [{ name: "Row id", type: "string" }] },
+    { label: "Deselect row", action: "deselectRow", args: [{ name: "Row id", type: "string" }] },
+    { label: "Force Datagrid refresh", action: "refreshData" },
+  ],
+  properties: {
+    // ─── TOOLBAR SETTINGS ───────────────────────────────────────────────────
+    showToolbar: {
+      label: { en: "Show Toolbar & Footer" },
+      type: "OnOff",
+      section: "settings",
+      bindable: true,
+      defaultValue: true,
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "boolean",
+        tooltip: "Show or hide the results toolbar and pagination footer",
+      },
+      /* wwEditor:end */
+    },
+    resultsLabel: {
+      label: { en: "Results Label" },
+      type: "Text",
+      section: "settings",
+      bindable: true,
+      defaultValue: "Results",
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "string",
+        tooltip: 'Label shown before the row count badge. Default: "Results"',
+      },
+      hidden: (content) => !content.showToolbar,
+      /* wwEditor:end */
+    },
+    rowsNoun: {
+      label: { en: "Rows Noun" },
+      type: "Text",
+      section: "settings",
+      bindable: true,
+      defaultValue: "rows",
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "string",
+        tooltip: 'Noun used for the row count, e.g. "leads", "records". Default: "rows"',
+      },
+      hidden: (content) => !content.showToolbar,
+      /* wwEditor:end */
+    },
+    rowsPerPageLabel: {
+      label: { en: "Rows Per Page Label" },
+      type: "Text",
+      section: "settings",
+      bindable: true,
+      defaultValue: "Rows per page",
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "string",
+        tooltip: 'Label for the rows-per-page dropdown. Default: "Rows per page"',
+      },
+      hidden: (content) => !content.showToolbar || !content.pagination,
+      /* wwEditor:end */
+    },
+ 
+    // ─── TOOLBAR STYLE ───────────────────────────────────────────────────────
+    toolbarBackgroundColor: {
+      type: "Color",
+      label: "Background Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    toolbarBorderColor: {
+      type: "Color",
+      label: "Border Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    toolbarPadding: {
+      label: "Padding",
+      type: "Spacing",
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+ 
+    // Results label style
+    resultsLabelColor: {
+      type: "Color",
+      label: "Label Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    resultsLabelFontSize: {
+      label: "Label Font Size",
+      type: "Length",
+      options: {
+        unitChoices: [
+          { value: "px", label: "px", min: 1, max: 100, default: true },
+          { value: "em", label: "em", min: 0, max: 10, digits: 3, step: 0.1 },
+          { value: "rem", label: "rem", min: 0, max: 10, digits: 3, step: 0.1 },
+        ],
+        noRange: true,
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    resultsLabelFontWeight: {
+      label: "Label Font Weight",
+      type: "TextSelect",
+      options: {
+        options: [
+          { value: null, label: "Default", default: true },
+          { value: 400, label: "400 - Normal" },
+          { value: 500, label: "500 - Medium" },
+          { value: 600, label: "600 - Semi Bold" },
+          { value: 700, label: "700 - Bold" },
+        ],
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    resultsLabelFontFamily: {
+      label: "Label Font Family",
+      type: "FontFamily",
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+ 
+    // Results badge style
+    resultsBadgeBackgroundColor: {
+      type: "Color",
+      label: "Badge Background",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    resultsBadgeColor: {
+      type: "Color",
+      label: "Badge Text Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    resultsBadgeBorderRadius: {
+      label: "Badge Border Radius",
+      type: "Length",
+      options: {
+        noRange: true,
+        unitChoices: [
+          { value: "px", label: "px", min: 0, max: 50, default: true },
+          { value: "%", label: "%", min: 0, max: 100, digits: 2, step: 1 },
+        ],
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    resultsBadgePadding: {
+      label: "Badge Padding",
+      type: "Spacing",
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+ 
+    // Rows per page style
+    rppLabelColor: {
+      type: "Color",
+      label: "Rows/Page Label Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    rppSelectBackgroundColor: {
+      type: "Color",
+      label: "Dropdown Background",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    rppSelectColor: {
+      type: "Color",
+      label: "Dropdown Text Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    rppSelectBorderColor: {
+      type: "Color",
+      label: "Dropdown Border Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    rppSelectBorderRadius: {
+      label: "Dropdown Border Radius",
+      type: "Length",
+      options: {
+        noRange: true,
+        unitChoices: [
+          { value: "px", label: "px", min: 0, max: 50, default: true },
+          { value: "%", label: "%", min: 0, max: 100, digits: 2, step: 1 },
+        ],
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+ 
+    // ─── FOOTER STYLE ────────────────────────────────────────────────────────
+    footerBackgroundColor: {
+      type: "Color",
+      label: "Background Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    footerBorderColor: {
+      type: "Color",
+      label: "Border Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    footerPadding: {
+      label: "Padding",
+      type: "Spacing",
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    footerInfoColor: {
+      type: "Color",
+      label: "Info Text Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    footerInfoFontSize: {
+      label: "Info Font Size",
+      type: "Length",
+      options: {
+        unitChoices: [
+          { value: "px", label: "px", min: 1, max: 100, default: true },
+          { value: "em", label: "em", min: 0, max: 10, digits: 3, step: 0.1 },
+          { value: "rem", label: "rem", min: 0, max: 10, digits: 3, step: 0.1 },
+        ],
+        noRange: true,
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+ 
+    // Pagination button style
+    maxPaginationButtons: {
+      type: "Number",
+      label: "Max Page Buttons",
+      options: {
+        min: 3,
+        max: 21,
+        step: 2,
+        noRange: true,
+      },
+      defaultValue: 7,
+      responsive: true,
+      bindable: true,
+      states: true,
+      classes: true,
+      propertyHelp: {
+        tooltip: "Maximum number of page buttons to show at once (including first, last, and ellipses). Must be odd — even values are rounded up. Minimum 3.",
+      },
+    },
+    pageBtnSize: {
+      label: "Button Size",
+      type: "Length",
+      options: {
+        noRange: true,
+        unitChoices: [{ value: "px", label: "px", min: 20, max: 60, default: true }],
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    pageBtnColor: {
+      type: "Color",
+      label: "Button Text Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    pageBtnBackgroundColor: {
+      type: "Color",
+      label: "Button Background",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    pageBtnBorderColor: {
+      type: "Color",
+      label: "Button Border Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    pageBtnBorderRadius: {
+      label: "Button Border Radius",
+      type: "Length",
+      options: {
+        noRange: true,
+        unitChoices: [
+          { value: "px", label: "px", min: 0, max: 50, default: true },
+          { value: "%", label: "%", min: 0, max: 100, digits: 2, step: 1 },
+        ],
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    pageBtnActiveColor: {
+      type: "Color",
+      label: "Active Button Text",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    pageBtnActiveBackgroundColor: {
+      type: "Color",
+      label: "Active Button Background",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+ 
+    // ─── EXISTING PROPERTIES (UNCHANGED) ────────────────────────────────────
+    layout: {
+      type: "TextSelect",
+      label: "Height Mode",
+      options: {
+        options: [
+          { value: "fixed", label: "Fixed", default: true },
+          { value: "auto", label: "Auto" },
+        ],
+      },
+      bindable: true,
+      responsive: true,
+      propertyHelp: {
+        tooltip:
+          "Be cautious when using auto mode with a large number of rows, as it may slow down page rendering",
+      },
+      bindingValidation: { type: "string", tooltip: "fixed | auto" },
+    },
+    height: {
+      label: { en: "Grid Height" },
+      type: "Length",
+      section: "style",
+      options: { noRange: true },
+      bindable: true,
+      classes: true,
+      responsive: true,
+      states: true,
+      defaultValue: "400px",
+      /* wwEditor:start */
+      bindingValidation: { type: "string", tooltip: "Height of the grid (e.g., 400px)" },
+      hidden: (content) => content.layout === "auto",
+      /* wwEditor:end */
+    },
+    headerBackgroundColor: {
+      type: "Color",
+      label: "Background Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    useDynamicStyleHeader: {
+      type: "OnOff",
+      label: "Use Dynamic Styling",
+      responsive: true, bindable: true, states: true, classes: true,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Toggle dynamic per-column header styles computed from formulas.\nPossible values: `true`, `false`",
+      },
+      /* wwEditor:end */
+    },
+    dynamicHeaderBackgroundColor: {
+      type: "Formula",
+      label: "Background Color",
+      options: { template: { name: "Header name", id: "Header id", type: "auto", dataType: "text" } },
+      responsive: true, states: true, classes: true,
+      hidden: (content) => !content.useDynamicStyleHeader,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Compute a dynamic background color using the column `name`, `id`, `type` or `dataType`.\nExample: `IF(name = 'Total', '#f1f5f9', #bababa)`",
+      },
+      /* wwEditor:end */
+    },
+    headerTextColor: {
+      type: "Color",
+      label: "Text Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    dynamicHeaderTextColor: {
+      type: "Formula",
+      label: "Text Color",
+      options: { template: { name: "Header name", id: "Header id", type: "auto", dataType: "text" } },
+      responsive: true, states: true, classes: true,
+      hidden: (content) => !content.useDynamicStyleHeader,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Compute a dynamic text color using the column `name`, `id`, `type` or `dataType`.\nExample: `IF(id = 'status', '#1f2937', #4a4a4a)`",
+      },
+      /* wwEditor:end */
+    },
+    headerFontWeight: {
+      label: "Font weight",
+      type: "TextSelect",
+      options: {
+        options: [
+          { value: null, label: "Default", default: true },
+          { value: 100, label: "100 - Thin" },
+          { value: 200, label: "200 - Extra Light" },
+          { value: 300, label: "300 - Light" },
+          { value: 400, label: "400 - Normal" },
+          { value: 500, label: "500 - Medium" },
+          { value: 600, label: "600 - Semi Bold" },
+          { value: 700, label: "700 - Bold" },
+          { value: 800, label: "800 - Extra Bold" },
+          { value: 900, label: "900 - Black" },
+        ],
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      bindingValidation: { markdown: "font-weight", type: "string", cssSupports: "font-weight" },
+    },
+    dynamicHeaderFontWeight: {
+      label: "Font weight",
+      type: "Formula",
+      options: { template: { name: "Header name", id: "Header id", type: "auto", dataType: "text" } },
+      responsive: true, states: true, classes: true,
+      hidden: (content) => !content.useDynamicStyleHeader,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Compute a dynamic font weight using the column `name`, `id`, `type` or `dataType`.\nPossible values: `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`\nExample: `IF(id = 'priority', 700, 400)`",
+      },
+      /* wwEditor:end */
+    },
+    headerFontSize: {
+      label: "Font Size",
+      type: "Length",
+      options: {
+        unitChoices: [
+          { value: "px", label: "px", min: 1, max: 100, default: true },
+          { value: "em", label: "em", min: 0, max: 10, digits: 3, step: 0.1 },
+          { value: "rem", label: "rem", min: 0, max: 10, digits: 3, step: 0.1 },
+        ],
+        noRange: true,
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      bindingValidation: { markdown: "font-size", type: "string", cssSupports: "font-size" },
+    },
+    dynamicHeaderFontSize: {
+      label: "Font Size",
+      type: "Formula",
+      options: { template: { name: "Header name", id: "Header id", type: "auto", dataType: "text" } },
+      responsive: true, states: true, classes: true,
+      hidden: (content) => !content.useDynamicStyleHeader,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Compute a dynamic font size using the column `name`, `id`, `type` or `dataType`.\nExample: `IF(name = 'Total', '16px', '14px')`",
+      },
+      /* wwEditor:end */
+    },
+    textColor: {
+      label: "Text Color",
+      type: "Color",
+      options: { nullable: true },
+      bindable: true,
+      bindingValidation: { markdown: "color", type: "string", cssSupports: "color" },
+      responsive: true, states: true, classes: true,
+    },
+    headerFontFamily: {
+      label: "Font family",
+      type: "FontFamily",
+      responsive: true, states: true, classes: true, bindable: true,
+      bindingValidation: { markdown: "font-family", type: "string", cssSupports: "font-family" },
+    },
+    dynamicHeaderFontFamily: {
+      label: "Font family",
+      type: "Formula",
+      responsive: true, states: true, classes: true,
+      options: { template: { name: "Header name", id: "Header id", type: "auto", dataType: "text" } },
+      hidden: (content) => !content.useDynamicStyleHeader,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Compute a dynamic font family using the column `name`, `id`, `type` or `dataType`.\nExample: `IF(type = 'number', 'Inter', 'Georgia')`",
+      },
+      /* wwEditor:end */
+    },
+    headerHeightMode: {
+      type: "TextSelect",
+      options: {
+        options: [
+          { value: null, label: "Fixed", default: true },
+          { value: "auto", label: "Auto" },
+        ],
+      },
+      label: "Height mode",
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    headerHeight: {
+      label: { en: "Height" },
+      type: "Length",
+      options: {
+        noRange: true,
+        unitChoices: [
+          { value: "px", label: "px", default: true },
+          { value: "em", label: "em", digits: 3, step: 0.1 },
+          { value: "rem", label: "rem", digits: 3, step: 0.1 },
+        ],
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      hidden: (content) => content.headerHeightMode === "auto",
+    },
+    borderColor: {
+      type: "Color",
+      label: "Border Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    cellColor: {
+      type: "Color",
+      label: "Text Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    cellFontFamily: {
+      label: "Font family",
+      type: "FontFamily",
+      responsive: true, states: true, classes: true, bindable: true,
+      bindingValidation: { markdown: "font-family", type: "string", cssSupports: "font-family" },
+    },
+    cellFontSize: {
+      type: "Length",
+      label: "Font Size",
+      options: {
+        unitChoices: [
+          { value: "px", label: "px", min: 1, max: 100, default: true },
+          { value: "em", label: "em", min: 0, max: 10, digits: 3, step: 0.1 },
+          { value: "rem", label: "rem", min: 0, max: 10, digits: 3, step: 0.1 },
+        ],
+        noRange: true,
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      bindingValidation: { markdown: "font-size", type: "string", cssSupports: "font-size" },
+    },
+    cellSelectionBorderColor: {
+      type: "Color",
+      label: "Selection Border Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+      bindingValidation: { markdown: "color", type: "string", cssSupports: "color" },
+    },
+    columnHoverHighlight: {
+      type: "OnOff",
+      label: "Hover Highlight",
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    columnHoverColor: {
+      type: "Color",
+      label: "Hover Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+      propertyHelp: { tooltip: "Should be a semi-transparent color to allow the background color to show through." },
+      hidden: (content) => !content.columnHoverHighlight,
+    },
+    rowBackgroundColor: {
+      type: "Color",
+      label: "Background Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    rowAlternateColor: {
+      type: "Color",
+      label: "Alternate Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    rowHoverColor: {
+      type: "Color",
+      label: "Hover Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+      propertyHelp: { tooltip: "Should be a semi-transparent color to allow the background color to show through." },
+    },
+    selectedRowBackgroundColor: {
+      type: "Color",
+      label: "Selected Row Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+      propertyHelp: { tooltip: "Background color applied to selected rows. Used as a static color when formula mode is off, or as a fallback when formula mode is on." },
+      hidden: (content) => content.useRowStyleFormula,
+    },
+    useRowStyleFormula: {
+      type: "OnOff",
+      label: "Use Row Style Formula",
+      responsive: true, bindable: true, states: true, classes: true,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Enable formula mode to conditionally style rows based on their data. The formula context includes all row fields plus `isSelected` (true/false).",
+      },
+      /* wwEditor:end */
+    },
+    rowStyleFormula: {
+      type: "Formula",
+      label: "Row Background Color",
+      options: {
+        template: {
+          isSelected: false,
+          id: "row-id",
+          status: "example-status",
+        },
+      },
+      responsive: true, states: true, classes: true,
+      hidden: (content) => !content.useRowStyleFormula,
+      /* wwEditor:start */
+      propertyHelp: {
+        tooltip: "Return a CSS color value based on row data. The context includes all row fields plus `isSelected`.
+Example: IF(isSelected, '#1e40af', IF(status = 'Qualified', '#14532d', ''))",
+      },
+      /* wwEditor:end */
+    },
+    selectionCheckboxColor: {
+      type: "Color",
+      label: "Selection Checkboxes Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+      bindingValidation: { markdown: "color", type: "string", cssSupports: "color" },
+    },
+    checkboxUncheckedBorderColor: {
+      type: "Color",
+      label: "Checkbox Unchecked Border Color",
+      options: { nullable: true },
+      responsive: true, bindable: true, states: true, classes: true,
+      bindingValidation: { markdown: "color", type: "string", cssSupports: "color" },
+    },
+    focusShadow: {
+      type: "Shadows",
+      label: "Focus Shadow",
+      responsive: true, bindable: true, states: true, classes: true,
+      bindingValidation: { markdown: "shadow", type: "string", cssSupports: "shadow" },
+    },
+    rowVerticalPaddingScale: {
+      type: "Number",
+      label: "Vertical Padding Scale",
+      options: { min: 0, max: 5, step: 0.1, default: 1 },
+      responsive: true, bindable: true, states: true, classes: true,
+    },
+    menuTextColor: {
+      label: "Text color",
+      type: "Color",
+      options: { nullable: true },
+      bindable: true,
+      bindingValidation: { markdown: "color", type: "string", cssSupports: "color" },
+      responsive: true, states: true, classes: true,
+    },
+    menuBackgroundColor: {
+      label: "Background color",
+      type: "Color",
+      options: { nullable: true },
+      bindable: true,
+      bindingValidation: { markdown: "background-color", type: "string", cssSupports: "background-color" },
+      responsive: true, states: true, classes: true,
+    },
+    actionColor: {
+      label: "Text color",
+      type: "Color",
+      options: { nullable: true },
+      bindable: true,
+      bindingValidation: { markdown: "color", type: "string", cssSupports: "color" },
+      responsive: true, states: true, classes: true,
+    },
+    actionBackgroundColor: {
+      label: "Background color",
+      type: "Color",
+      options: { nullable: true },
+      bindable: true,
+      bindingValidation: { markdown: "background-color", type: "string", cssSupports: "background-color" },
+      responsive: true, states: true, classes: true,
+    },
+    actionPadding: {
+      label: "Padding",
+      type: "Spacing",
+      responsive: true, bindable: true, states: true, classes: true,
+      bindingValidation: { markdown: "padding", type: "string", cssSupports: "padding" },
+    },
+    actionBorder: {
+      label: "Border",
+      type: "Border",
+      responsive: true, bindable: true, states: true, classes: true,
+      bindingValidation: { markdown: "border", type: "string", cssSupports: "border" },
+    },
+    actionBorderRadius: {
+      label: "Border radius",
+      type: "Spacing",
+      options: {
+        isCorner: true,
+        unitChoices: [
+          { value: "px", label: "px", min: 0, max: 50, default: true },
+          { value: "%", label: "%", min: 0, max: 100, digits: 2, step: 1 },
+        ],
+      },
+      responsive: true, bindable: true, states: true, classes: true,
+      bindingValidation: { markdown: "border-radius", type: "string", cssSupports: "border-radius" },
+    },
+    actionFont: {
+      label: "Typography",
+      type: "Typography",
+      options: (content, sidepanelContent, boundProperties) => ({
+        initialValue: {
+          fontSize: content["actionFontSize"],
+          fontFamily: content["actionFontFamily"],
+          fontWeight: content["actionFontWeight"],
+          fontStyle: content["actionFontStyle"],
+          lineHeight: content["actionLineHeight"],
+        },
+        creationDisabled:
+          boundProperties["actionFontSize"] ||
+          boundProperties["actionFontFamily"] ||
+          boundProperties["actionFontWeight"] ||
+          boundProperties["actionFontStyle"] ||
+          boundProperties["actionLineHeight"],
+        creationDisabledMessage: "Cannot create typography from bound properties",
+      }),
+      bindable: true, responsive: true, states: true, classes: true,
+    },
+    actionFontSize: {
+      label: "Size",
+      type: "Length",
+      options: {
+        unitChoices: [
+          { value: "px", label: "px", min: 1, max: 100, default: true },
+          { value: "em", label: "em", min: 0, max: 10, digits: 3, step: 0.1 },
+          { value: "rem", label: "rem", min: 0, max: 10, digits: 3, step: 0.1 },
+        ],
+        noRange: true,
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      hidden: (content, _, boundProps) => content["actionFont"] || boundProps["actionFont"],
+      bindingValidation: { markdown: "font-size", type: "string", cssSupports: "font-size" },
+    },
+    actionFontFamily: {
+      label: "Font family",
+      type: "FontFamily",
+      responsive: true, states: true, classes: true, bindable: true,
+      hidden: (content, _, boundProps) => content["actionFont"] || boundProps["actionFont"],
+      bindingValidation: { markdown: "font-family", type: "string", cssSupports: "font-family" },
+    },
+    actionFontWeight: {
+      label: "Font weight",
+      type: "TextSelect",
+      options: {
+        options: [
+          { value: null, label: "Default", default: true },
+          { value: 100, label: "100 - Thin" },
+          { value: 200, label: "200 - Extra Light" },
+          { value: 300, label: "300 - Light" },
+          { value: 400, label: "400 - Normal" },
+          { value: 500, label: "500 - Medium" },
+          { value: 600, label: "600 - Semi Bold" },
+          { value: 700, label: "700 - Bold" },
+          { value: 800, label: "800 - Extra Bold" },
+          { value: 900, label: "900 - Black" },
+        ],
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      hidden: (content, _, boundProps) => content["actionFont"] || boundProps["actionFont"],
+      bindingValidation: { markdown: "font-weight", type: "string", cssSupports: "font-weight" },
+    },
+    actionFontStyle: {
+      label: "Font Style",
+      type: "TextRadioGroup",
+      options: {
+        choices: [
+          { value: null, title: "Default", icon: "typo-default", default: true },
+          { value: "italic", title: "Italic", icon: "typo-italic" },
+        ],
+      },
+      responsive: true, states: true, bindable: true, classes: true,
+      hidden: (content, _, boundProps) => content["actionFont"] || boundProps["actionFont"],
+      bindingValidation: { markdown: "font-style", type: "string", cssSupports: "font-style" },
+    },
+    actionLineHeight: {
+      label: "Line height",
+      type: "Length",
+      options: {
+        unitChoices: [
+          { value: "normal", label: "auto", default: true },
+          { value: "px", label: "px", min: 0, max: 100 },
+          { value: "%", label: "%", min: 0, max: 100 },
+          { value: "em", label: "em", min: 0, max: 10, digits: 3, step: 0.1 },
+          { value: "rem", label: "rem", min: 0, max: 10, digits: 3, step: 0.1 },
+          { value: "unset", label: "none" },
+        ],
+        noRange: true,
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      hidden: (content, _, boundProps) => content["actionFont"] || boundProps["actionFont"],
+      bindingValidation: { markdown: "line-height", type: "string", cssSupports: "line-height" },
+    },
+    // ─── SERVER-SIDE PAGINATION ─────────────────────────────────────────────
+    serverTotalItems: {
+      label: { en: "Total Items (Server)" },
+      type: "Number",
+      section: "settings",
+      bindable: true,
+      defaultValue: null,
+      options: { noRange: true },
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "number",
+        tooltip: "Bind to your API's total item count (e.g. `apiResponse.itemsTotal`). When set, overrides the client-side row count for the toolbar and pagination UI.",
+      },
+      propertyHelp: {
+        tooltip: "Maps to `itemsTotal` in your API response. Enables server-side pagination mode.",
+      },
+      /* wwEditor:end */
+    },
+    serverTotalPages: {
+      label: { en: "Total Pages (Server)" },
+      type: "Number",
+      section: "settings",
+      bindable: true,
+      defaultValue: null,
+      options: { noRange: true },
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "number",
+        tooltip: "Bind to your API's total page count (e.g. `apiResponse.pageTotal`). Drives the pagination button range.",
+      },
+      propertyHelp: {
+        tooltip: "Maps to `pageTotal` in your API response.",
+      },
+      /* wwEditor:end */
+    },
+    serverCurrentPage: {
+      label: { en: "Current Page (Server)" },
+      type: "Number",
+      section: "settings",
+      bindable: true,
+      defaultValue: null,
+      options: { noRange: true },
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "number",
+        tooltip: "Bind to your API's current page number (e.g. `apiResponse.curPage`). 1-based. Used to highlight the active page button and calculate the Showing X–Y range.",
+      },
+      propertyHelp: {
+        tooltip: "Maps to `curPage` in your API response. Must be 1-based.",
+      },
+      /* wwEditor:end */
+    },
+    serverItemsReceived: {
+      label: { en: "Items Received (Server)" },
+      type: "Number",
+      section: "settings",
+      bindable: true,
+      defaultValue: null,
+      options: { noRange: true },
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "number",
+        tooltip: "Bind to your API's count of items on the current page (e.g. `apiResponse.itemsReceived`). Used for the 'Showing X–Y' end value on the last page where the page may not be full.",
+      },
+      propertyHelp: {
+        tooltip: "Maps to `itemsReceived` in your API response. Ensures accurate end-range on partial last pages.",
+      },
+      /* wwEditor:end */
+    },
+ 
+    rowData: {
+      label: { en: "Data" },
+      type: "ObjectList",
+      options: { useSchema: true },
+      section: "settings",
+      bindable: true,
+      defaultValue: [],
+      /* wwEditor:start */
+      bindingValidation: {
+        validations: [{ type: "array" }, { type: "object" }],
+        tooltip: "A collection or an array of data: \n\n`myCollection` or `[{}, {}, ...]`",
+      },
+      /* wwEditor:end */
+    },
+    cellAlignmentMode: {
+      label: "Alignment Mode",
+      type: "TextSelect",
+      options: {
+        options: [
+          { value: "inherit", label: "Same as column", default: true },
+          { value: "custom", label: "Custom" },
+        ],
+      },
+    },
+    cellAlignment: {
+      type: "TextRadioGroup",
+      label: "Alignment",
+      options: {
+        choices: [
+          { value: "left", title: "Left", icon: "align-left", default: true },
+          { value: "center", title: "Center", icon: "align-center" },
+          { value: "right", title: "Right", icon: "align-right" },
+        ],
+      },
+      responsive: true, states: true, classes: true, bindable: true,
+      section: "style",
+      bindingValidation: { type: "string", enum: ["left", "center", "right"], tooltip: "Cell alignment: left, center, or right" },
+      hidden: (content) => content.cellAlignmentMode !== "custom",
+    },
+    idFormula: {
+      type: "Formula",
+      label: "Unique Row Id",
+      options: (content) => ({
+        template: wwLib.wwUtils.getDataFromCollection(content.rowData)?.[0],
+      }),
+      section: "settings",
+      propertyHelp: { tooltip: "A unique id per row. Very useful for performance optimization." },
+    },
+    generateColumns: {
+      type: "Button",
+      options: { text: "Generate columns", color: "blue", action: "generateColumns" },
+      section: "settings",
+      editorOnly: true,
+    },
+    columns: {
+      label: { en: "Columns" },
+      type: "Array",
+      options: {
+        item: {
+          type: "Object",
+          options: (content, sidePanelContent, boundProperties, wwProps, array) => ({
+            singleLine: true,
+            item: {
+              headerName: { label: "Header Name", type: "Text", bindable: true },
+              cellDataType: {
+                label: "Type",
+                type: "TextSelect",
+                options: {
+                  options: [
+                    { value: undefined, label: "Auto", default: true },
+                    { value: "text", label: "Text" },
+                    { value: "number", label: "Number" },
+                    { value: "boolean", label: "Boolean" },
+                    { value: "dateString", label: "Date" },
+                    { value: "image", label: "Image" },
+                    { value: "action", label: "Action" },
+                    { value: "custom", label: "Custom" },
+                  ],
+                },
+              },
+              info: {
+                type: "InfoBox",
+                options: { variant: "warning", content: "To select your custom cell, use the Layout view" },
+                editorOnly: true,
+                hidden: array?.item?.cellDataType !== "custom",
+              },
+              field: { label: "Key", type: "Text", hidden: array?.item?.cellDataType === "action" },
+              useCustomLabel: {
+                label: "Custom display value",
+                type: "OnOff",
+                hidden: array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image" || array?.item?.cellDataType === "custom",
+              },
+              displayLabelFormula: {
+                label: "Display value",
+                type: "Formula",
+                options: {
+                  template: _.get(wwLib.wwUtils.getDataFromCollection(content.rowData)?.[0], array?.item?.field),
+                },
+                hidden: array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image" || !array?.item?.useCustomLabel || array?.item?.cellDataType === "custom",
+              },
+              widthAlgo: {
+                type: "TextRadioGroup",
+                options: {
+                  choices: [
+                    { value: "fixed", label: "Fixed", default: true },
+                    { value: "flex", label: "Flex" },
+                  ],
+                },
+              },
+              flex: {
+                label: "Flex",
+                type: "Number",
+                options: { min: 1, max: 10, step: 1, noRange: true, defaultValue: 1 },
+                hidden: array?.item?.widthAlgo !== "flex",
+              },
+              width: {
+                type: "Length",
+                options: { noRange: true, unitChoices: [{ value: "px", label: "px", min: 0, max: 1300 }, { value: "auto", label: "auto" }] },
+                hidden: array?.item?.widthAlgo === "flex",
+              },
+              minWidth: {
+                label: "Min Width",
+                type: "Length",
+                options: { noRange: true, unitChoices: [{ value: "px", label: "px", min: 0, max: 1300 }, { value: "auto", label: "auto" }] },
+              },
+              maxWidth: {
+                label: "Max Width",
+                type: "Length",
+                options: { noRange: true, unitChoices: [{ value: "px", label: "px", min: 0, max: 1300 }, { value: "auto", label: "auto" }] },
+              },
+              headerAlignment: {
+                type: "TextRadioGroup",
+                label: "Header Alignment",
+                options: {
+                  choices: [
+                    { value: "left", title: "Left", icon: "align-left", default: true },
+                    { value: "center", title: "Center", icon: "align-center" },
+                    { value: "right", title: "Right", icon: "align-right" },
+                  ],
+                },
+                responsive: true, states: true, classes: true, bindable: true,
+                section: "style",
+                bindingValidation: { type: "string", enum: ["left", "center", "right"], tooltip: "Header alignment: left, center, or right" },
+              },
+              cellAlignment: {
+                type: "TextRadioGroup",
+                label: "Cell Alignment",
+                options: {
+                  choices: [
+                    { value: "left", title: "Left", icon: "align-left", default: true },
+                    { value: "center", title: "Center", icon: "align-center" },
+                    { value: "right", title: "Right", icon: "align-right" },
+                  ],
+                },
+                responsive: true, states: true, classes: true, bindable: true,
+                section: "style",
+                bindingValidation: { type: "string", enum: ["left", "center", "right"], tooltip: "Cell alignment: left, center, or right" },
+              },
+              pinned: {
+                label: "Pinned",
+                type: "TextRadioGroup",
+                options: {
+                  choices: [
+                    { value: "none", label: "None", default: true },
+                    { value: "left", label: "Left" },
+                    { value: "right", label: "Right" },
+                  ],
+                },
+              },
+              hide: {
+                label: "Hidden",
+                type: "OnOff",
+                bindable: true,
+                bindingValidation: { type: "boolean", tooltip: "True to hide the column" },
+              },
+              editable: {
+                label: "Editable",
+                type: "OnOff",
+                hidden: array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image" || array?.item?.cellDataType === "custom",
+                bindable: true,
+              },
+              editorType: {
+                label: "Editor Type",
+                type: "TextSelect",
+                options: {
+                  options: [
+                    { value: "default", label: "Default (text)", default: true },
+                    { value: "phone", label: "Phone  —  (###) ###-####" },
+                  ],
+                },
+                hidden: !array?.item?.editable || array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image" || array?.item?.cellDataType === "custom",
+                bindable: true,
+              },
+              filter: {
+                label: "Filter",
+                type: "OnOff",
+                hidden: array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image",
+                bindable: true,
+              },
+              sortable: {
+                label: "Sortable",
+                type: "OnOff",
+                hidden: array?.item?.cellDataType === "action" || array?.item?.cellDataType === "image",
+                bindable: true,
+              },
+              actionName: { label: "Action Name", type: "Text", hidden: array?.item?.cellDataType !== "action" },
+              actionLabel: { label: "Action Label", type: "Text", hidden: array?.item?.cellDataType !== "action" },
+              imageWidth: { label: "Image width", type: "Length", options: { noRange: true }, hidden: array?.item?.cellDataType !== "image" },
+              imageHeight: { label: "Image height", type: "Length", options: { noRange: true }, hidden: array?.item?.cellDataType !== "image" },
+            },
+            propertiesOrder: [
+              "headerName", "field", "cellDataType", "info",
+              "actionName", "actionLabel", "imageWidth", "imageHeight",
+              "useCustomLabel", "displayLabelFormula",
+              { label: "Width", isCollapsible: true, properties: ["widthAlgo", "flex", "width", "minWidth", "maxWidth"] },
+              { label: "Configuration", isCollapsible: true, properties: ["pinned", "hide", "editable", "editorType", "filter", "sortable"] },
+            ],
+          }),
+        },
+        defaultValue: { filter: false, sortable: false },
+        movable: true,
+        expandable: true,
+        getItemLabel(item, index) {
+          return item?.headerName?.length ? item.headerName : item?.field?.length ? item.field : `Column ${index + 1}`;
+        },
+      },
+      defaultValue: [],
+      section: "settings",
+      bindable: true,
+    },
+    pagination: {
+      label: { en: "Pagination" },
+      type: "OnOff",
+      section: "settings",
+      bindable: true,
+      defaultValue: false,
+      /* wwEditor:start */
+      bindingValidation: { type: "boolean", tooltip: "Enable or disable pagination" },
+      /* wwEditor:end */
+    },
+    hasPaginationSelector: {
+      label: { en: "Rows Per Page" },
+      type: "TextSelect",
+      section: "settings",
+      bindable: true,
+      options: {
+        options: [
+          { value: "single", label: "Single", default: true },
+          { value: "multiple", label: "Multiple" },
+        ],
+      },
+      /* wwEditor:start */
+      hidden: (content) => !content.pagination,
+      bindingValidation: { type: "string", enum: ["single", "multiple"], tooltip: "Type of pagination (single or multiple)" },
+      /* wwEditor:end */
+    },
+    paginationPageSize: {
+      type: "Number",
+      section: "settings",
+      bindable: true,
+      defaultValue: 10,
+      options: { noRange: true },
+      /* wwEditor:start */
+      bindingValidation: { type: "number", tooltip: "Number of rows to display per page" },
+      hidden: (content) => !content.pagination || content.hasPaginationSelector === "multiple",
+      /* wwEditor:end */
+    },
+    paginationPageSizeSelector: {
+      type: "RawObject",
+      section: "settings",
+      bindable: true,
+      options: { placeholder: "[10, 20, 50, 100]" },
+      /* wwEditor:start */
+      bindingValidation: { type: "Array", tooltip: "Array of number of rows to display per page" },
+      hidden: (content) => !content.pagination || !content.hasPaginationSelector || content.hasPaginationSelector === "single",
+      /* wwEditor:end */
+    },
+    rowSelection: {
+      label: { en: "Row Selection" },
+      type: "TextSelect",
+      section: "settings",
+      bindable: true,
+      options: {
+        options: [
+          { value: "none", label: "None", default: true },
+          { value: "single", label: "Single" },
+          { value: "multiple", label: "Multiple" },
+        ],
+      },
+      /* wwEditor:start */
+      bindingValidation: { type: "string", tooltip: "Type of row selection: none or single or multiple" },
+      /* wwEditor:end */
+    },
+    enableClickSelection: {
+      label: { en: "Enable Click Selection" },
+      type: "OnOff",
+      section: "settings",
+      bindable: true,
+      /* wwEditor:start */
+      bindingValidation: { type: "boolean", tooltip: "True to enable row selection on click" },
+      hidden: (content) => content.rowSelection === "none" || content.rowSelection === undefined,
+      /* wwEditor:end */
+    },
+    disableCheckboxes: {
+      label: { en: "Disable Checkboxes" },
+      type: "OnOff",
+      section: "settings",
+      bindable: true,
+      defaultValue: false,
+      /* wwEditor:start */
+      bindingValidation: { type: "boolean", tooltip: "True to disable checkboxes" },
+      hidden: (content) => content.rowSelection === "none" || content.rowSelection === undefined,
+      /* wwEditor:end */
+    },
+    selectAll: {
+      label: { en: "Select All behavior" },
+      type: "TextSelect",
+      section: "settings",
+      bindable: true,
+      defaultValue: "all",
+      options: {
+        options: [
+          { value: "all", label: "All", default: true },
+          { value: "filtered", label: "Filtered" },
+          { value: "currentPage", label: "Current Page" },
+        ],
+      },
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "string",
+        enum: ["all", "filtered", "currentPage"],
+        tooltip: "Select all behavior: 'all' to select all rows, 'filtered' to select filtered rows, 'currentPage' to select current page rows",
+      },
+      hidden: (content) => content.rowSelection !== "multiple",
+      /* wwEditor:end */
+    },
+    movableColumns: {
+      label: { en: "Movable Columns" },
+      type: "OnOff",
+      section: "settings",
+      bindable: true,
+      /* wwEditor:start */
+      bindingValidation: { type: "boolean", tooltip: "Enable or disable movable columns" },
+      /* wwEditor:end */
+    },
+    resizableColumns: {
+      label: { en: "Resizable Columns" },
+      type: "OnOff",
+      section: "settings",
+      bindable: true,
+      defaultValue: true,
+      /* wwEditor:start */
+      bindingValidation: { type: "boolean", tooltip: "Enable or disable resizable columns" },
+      /* wwEditor:end */
+    },
+    initialFilters: {
+      label: { en: "Initial Filters" },
+      type: "RawObject",
+      section: "settings",
+      bindable: true,
+      defaultValue: null,
+      bindingValidation: { type: "object", tooltip: "An object representing the initial filter model" },
+    },
+    initialSort: {
+      label: { en: "Initial Sort" },
+      type: "RawObject",
+      section: "settings",
+      bindable: true,
+      defaultValue: null,
+      bindingValidation: { type: "array", tooltip: "An array representing the initial sort model" },
+    },
+    initialColumnsOrder: {
+      label: { en: "Initial Columns Order" },
+      type: "RawObject",
+      section: "settings",
+      bindable: true,
+      defaultValue: null,
+      bindingValidation: { type: "array", tooltip: "An array representing the id of the initial columns order" },
+    },
+    lang: {
+      label: { en: "Language" },
+      type: "TextSelect",
+      section: "settings",
+      bindable: true,
+      options: {
+        options: [
+          { value: "en", label: "English", default: true },
+          { value: "fr", label: "French" },
+          { value: "es", label: "Spanish" },
+          { value: "de", label: "German" },
+          { value: "pt", label: "Portuguese" },
+          { value: "custom", label: "Custom" },
+        ],
+      },
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "string",
+        tooltip: "Localisation to use. Default is English. Possible values: en, fr, es, de, pt, custom. Use custom to set your own locale texts.",
+      },
+      /* wwEditor:end */
+    },
+    localeText: {
+      label: { en: "Locale texts" },
+      type: "RawObject",
+      section: "settings",
+      bindable: true,
+      defaultValue: {},
+      hidden: (content) => content.lang !== "custom",
+      /* wwEditor:start */
+      bindingValidation: {
+        type: "object",
+        tooltip: 'See <a href="https://github.com/ag-grid/ag-grid/blob/latest/community-modules/locale/src/en-US.ts" target="_blank">Aggrid website</a> for the list of texts to localise',
+      },
+      /* wwEditor:end */
+    },
+    wrapperBorderRadius: {
+      label: { en: "Border Radius" },
+      type: "Length",
+      options: { noRange: true },
+      bindable: true, responsive: true, states: true, classes: true,
+    },
+    rowReorder: {
+      label: { en: "Row Reorder" },
+      type: "OnOff",
+      section: "settings",
+      bindable: true,
+      defaultValue: false,
+      /* wwEditor:start */
+      bindingValidation: { type: "boolean", tooltip: "Enable or disable row reordering" },
+      /* wwEditor:end */
+    },
+    reorderInfoBox: {
+      type: "InfoBox",
+      section: "settings",
+      editorOnly: true,
+      hidden: (content) => !(content.rowReorder && content.pagination),
+      options: {
+        variant: "warning",
+        icon: "warning",
+        title: "Incompatible options",
+        content: "Row reordering is not compatible with pagination. Pagination will be disabled",
+      },
+    },
+  },
+};
